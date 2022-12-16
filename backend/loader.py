@@ -118,7 +118,7 @@ class Loader:
     def handle_frontend_bundle(self, request):
         plugin = self.plugins[request.match_info["plugin_name"]]
 
-        with open(path.join(self.plugin_path, plugin.plugin_directory, "dist/index.js"), 'r') as bundle:
+        with open(path.join(self.plugin_path, plugin.plugin_directory, "dist/index.js"), 'r', encoding="utf-8") as bundle:
             return web.Response(text=bundle.read(), content_type="application/javascript")
 
     def import_plugin(self, file, plugin_directory, refresh=False, batch=False):
